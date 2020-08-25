@@ -1,0 +1,43 @@
+ALGORITHM algorithm_name
+VAR
+ tab1 : ARRAY_OF INTEGER[n1];
+ tab2 : ARRAY_OF INTEGER[n2];
+ htab:HASH_TABLE<INTEGER,INTEGER>
+ i,j,s,n1,n2,count=INTEGER;
+BEGIN
+s:=0;
+//get the elements of the two tables
+Write("enter the length of the first table minus 1 ");
+Read (n1);
+Write("enter the length of the second table minus 1 ");
+Read (n2);
+FOR i FROM 0 TO n1 STEP 1  DO
+Read(tab1[i]);
+END_FOR
+FOR i FROM 0 TO n2 STEP 1  DO
+Read(tab2[i]);
+END_FOR
+//insert the elements of the two tables in hash table
+FOR i FROM 0 TO n1 STEP 1  DO
+htab.insert(tab1,1)
+END_FOR
+FOR i FROM 0 TO n2 STEP 1  DO
+htab.insert(tab2,1)
+END_FOR
+
+// put the array values as keys and their occurence as values of the hash table
+FOR i FROM 0 TO n1 STEP 1  DO
+FOR j FROM 0 TO n2 STEP 1  DO
+IF (tab1[i]=tab2[j]) THEN
+    count=htab.get(tab1[i]);
+    htab.insert(tab1[i],count+1);
+END_IF
+END_FOR
+END_FOR
+// calculate the sum by multilply the repeated numbers by its repetition
+FOR i FROM 0 TO htab.length-1 STEP 1  DO
+    IF (htab.get(tab1[i])=2) THEN
+        s=s+2*tab1[i];
+    END_IF
+END_FOR
+END

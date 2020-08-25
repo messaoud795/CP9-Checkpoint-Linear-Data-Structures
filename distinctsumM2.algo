@@ -1,0 +1,49 @@
+ALGORITHM distinct_sum
+// calculate the sum of the repeated elements from two table using hash table
+VAR
+ tab1 : ARRAY_OF INTEGER[n1];
+ tab2 : ARRAY_OF INTEGER[n2];
+ htab:HASH_TABLE<INTEGER,INTEGER>
+ i,j,s,n1,n2=INTEGER;
+BEGIN
+s:=0;
+//get the elements of the two tables
+Write("enter the length of the first table minus 1 ");
+Read (n1);
+Write("enter the length of the second table minus 1 ");
+Read (n2);
+FOR i FROM 0 TO n1 STEP 1  DO
+Read(tab1[i]);
+END_FOR
+FOR i FROM 0 TO n2 STEP 1  DO
+Read(tab2[i]);
+END_FOR
+// insert the distinct elements of tab1 into the hash table with count 1 as value
+FOR i FROM 0 TO n1 STEP 1  DO
+FOR j FROM 0 TO n2 STEP 1  DO
+IF (tab1[i]<>tab2[j]) THEN
+    htab.insert(tab1[i],1);
+END_IF
+END_FOR
+END_FOR
+
+// insert the distinct elements of tab2 into the hash table with count 1 as value
+FOR i FROM 0 TO n2 STEP 1  DO
+FOR j FROM 0 TO n1 STEP 1  DO
+IF (tab2[i]<>tab1[j]) THEN
+    htab.insert(tab2[i],1);
+END_IF
+END_FOR
+END_FOR
+
+// sum of the elements of hash table with count 1
+FOR i FROM 0 TO htab.length STEP 1  DO
+    IF (htab.lookup(tab1[i]))) THEN
+        s=s+tab1[i];
+    END_IF
+    IF (htab.lookup(tab2[i]))) THEN
+        s=s+tab2[i];
+    END_IF
+END_FOR
+
+END

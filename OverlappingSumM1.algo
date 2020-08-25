@@ -1,0 +1,26 @@
+ALGORITHM overlapping_sum
+VAR
+ tab1 : ARRAY_OF INTEGER[n1];
+ tab2 : ARRAY_OF INTEGER[n2];
+ i,j,s,n1,n2=INTEGER;
+BEGIN
+s:=0;
+//get the elements of the two tables
+Write("enter the length of the first table minus 1 ");
+Read (n1);
+Write("enter the length of the second table minus 1 ");
+Read (n2);
+FOR i FROM 0 TO n1 STEP 1  DO
+Read(tab1[i]);
+END_FOR
+FOR i FROM 0 TO n2 STEP 1  DO
+Read(tab2[i]);
+END_FOR
+FOR i FROM 0 TO n1 STEP 1  DO
+        FOR j FROM 0 TO n2 STEP 1  DO
+            IF (tab1[i]=tab2[j]) THEN
+                s:=s+2*tab1[i];
+            END_IF
+        END_FOR
+END_FOR
+END
